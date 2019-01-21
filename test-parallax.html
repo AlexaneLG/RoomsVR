@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Track Mouse </title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<p id="position"></p>
+	<p id="window"></p>
+	<p id="centered"></p>
+	<p id="normalized"></p>
+
+	<script type="text/javascript">
+		document.addEventListener("mousemove", function(event){         
+		    var x = event.clientX;
+		    var y = event.clientY;
+		    document.getElementById('position').innerHTML = "[ X = "+ x +"][ Y = "+ y +"]";
+
+		    var width = window.innerWidth;
+			var height = window.innerHeight;
+			var halfWidth = width / 2;
+			var halfHeight = height / 2;
+			document.getElementById('window').innerHTML = "Window width = "+ width +", Window height = "+ height;
+
+			var xCentered = x - halfWidth;
+			var yCentered = y - halfHeight;
+			document.getElementById('centered').innerHTML = "[ Centered X = "+ xCentered +"][ Centered Y = "+ yCentered +"]";
+
+			var xNormalized = xCentered / halfWidth;
+			var yNormalized = yCentered / halfHeight;
+			document.getElementById('normalized').innerHTML = "[ Normalized X = "+ xNormalized +"][ Normalized Y = "+ yNormalized +"]";
+    	});
+	</script>
+</body>
+</html>

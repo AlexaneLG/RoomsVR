@@ -1,0 +1,457 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta charset="utf-8">
+    	<title>Alexane Le Guern</title>
+
+	    <link rel="icon" href="favicon.png">
+	    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+	    <meta name="description" content="Portfolio Alexane Le Guern">
+
+	    <link rel="stylesheet" type="text/css" href="style.css">
+
+	    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+	    <script src="js/aframe-extras.min.js"></script>
+
+	    <script src="js/lzma.js"></script>
+	    <script src="js/ctm.js"></script>
+	    <script src="js/CTMLoader.js"></script>
+
+	    <script src="js/aframe-teleport-controls.min.js"></script>
+	    <script src="js/envMapMaterial.js"></script>
+	    <script src="js/ctm_component.js"></script>
+	    <script src="js/mobile_component.js"></script>
+
+	    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+	    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+	    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+	    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+
+	    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+
+	    <script src="js/components/parallax.js"></script>
+	    <script src="js/components/displaystars.js"></script>
+
+	    <script src="js/shaders/alphamatte.js"></script>
+	    <script src="js/shaders/wireframe.js"></script>
+
+	</head>
+
+	<body>
+		<!-- UI DEBUT -->
+		<div id="container" class="container">
+	      <div class="info">
+	        <div class="title">WIP</div>
+	        <!--<div class="logo"><a href="https://www.4dcrea.com" target="_blank"><img src="https://www.4dcrea.com/wp-content/uploads/2017/09/4D_CREA-Logo.png"></a></div>-->
+	        <a class="button" id="start_experience" href="#">GO !</a>
+	      </div>
+	    </div>
+
+	    <!-- SCENE physics="debug: true" stats -->
+	    <a-scene background="color: #2f357a" shadow="type: basic" vr-mode-ui="enabled: true">
+			<a-entity mobile></a-entity>
+
+			<a-entity light="type: ambient; 
+							color: #EEE; 
+							intensity: 1">
+							</a-entity>
+			<a-entity light="type: point;  
+							color: #EEE; 
+							intensity: 1; 
+							castShadow: true;
+							target: #ground;
+							" 
+					position="-0.40 50.70 -3.02">
+					</a-entity>
+
+			<!-- ASSETS -->
+			<a-assets>
+				<!-- IMAGE LINK TEMPLATE -->
+		        <script id="link" type="text/html">
+		          <a-entity class="link"
+		            geometry="primitive: plane; height: 1; width: 1"
+		            material="shader: flat; src: ${thumb}"
+		            event-set__1="_event: mousedown; scale: 1 1 1"
+		            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+		            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+		            event-set__4="_event: mouseleave; scale: 1 1 1"
+		            set-scene="on: click; target: ${target}; src: ${src}">
+		            </a-entity>
+
+		        </script>
+
+		        <!-- TEXTURES -->
+		        <img 
+					id="palette-tex" 
+					src="textures/palette-bedroom-01-01.png">
+				<img 
+					id="computer-tex" 
+					src="textures/texComputer.png">
+				<img 
+					id="photos-tex" 
+					src="textures/texPhotos.png">
+				
+
+		        <!-- MODELS -->
+
+		        <a-asset-item 
+		        	id="walls-obj" 
+		        	src="models/room-walls.obj">
+		        	</a-asset-item>
+		        <a-asset-item 
+		        	id="computer-obj" 
+		        	src="models/computer.obj">
+		        	</a-asset-item>
+		        <a-asset-item 
+		        	id="photos-obj" 
+		        	src="models/photos.obj">
+		        	</a-asset-item>
+		        <a-asset-item 
+		        	id="watercolor-obj" 
+		        	src="models/watercolor.obj">
+		        	</a-asset-item>
+		        <a-asset-item 
+		        	id="smartphone-obj" 
+		        	src="models/smartphone.obj">
+		        	</a-asset-item>
+	        	<a-asset-item 
+		        	id="star-5-obj" 
+		        	src="models/star-5.obj">
+		        	</a-asset-item>
+		        <a-asset-item 
+		        	id="star-4-obj" 
+		        	src="models/star-4.obj">
+		        	</a-asset-item>
+
+	        	<!-- VIDEOS -->
+	        	<!-- <video id="hologram-kenzo" autoplay loop="true" src="video/KENZO_Media4D.mp4"></video> -->
+
+        	</a-assets>
+
+        	<!-- PARTIE 1 - PRESENTATION -->
+        	<a-entity parallax id="presentation" position="0 0 -2">
+				<!--<a-entity 
+					text="value:WORK IN PROGRESS; align:center" 
+					position="0 0 1" 
+					scale="10 10 10"></a-entity>
+				<a-entity 
+					text="value:portfolio / 3d dev; align:center" 
+					position="0 -0.6 1" 
+					scale="7 7 7"></a-entity>-->
+				<!--<a-entity>
+					<a-box position="-1 0 -3" shadow="" material="color:#ff000c"  wireframe>
+						<a-animation 
+							attribute="rotation" 
+							to="0 360 360" 
+							dur="5000" 
+							easing="linear" 
+							repeat="indefinite"></a-animation>
+					</a-box>
+					<a-animation 
+						attribute="rotation" 
+						to="0 0 360" 
+						dur="5000" 
+						easing="linear" 
+						repeat="indefinite"></a-animation>
+				</a-entity>-->
+				<!-- Room model 
+				shadow="cast: true; receive: true"
+				-->
+				
+        		<a-entity
+        			position="-2 -4 -5" 
+        			rotation="15 50 20" 
+        			scale="0.1 0.1 0.1">
+        			<a-entity 
+	        			obj-model="obj: #walls-obj" 
+	        			material="color: #c2c7f3; metalness: 0; roughness: 1; src: #palette-tex; shader: flat;">
+	        			</a-entity>
+	        		<a-entity 
+						class="clickableObject"
+	        			obj-model="obj: #computer-obj" 
+	        			material="color: #c2c7f3; metalness: 0; roughness: 1; src: #computer-tex; shader: flat;">
+	        			</a-entity>
+	        		<a-entity 
+						class="clickableObject"
+	        			obj-model="obj: #photos-obj" 
+	        			material="color: #c2c7f3; metalness: 0; roughness: 1; src: #photos-tex; shader: flat;">
+	        			</a-entity>
+	        		<a-entity 
+						class="clickableObject"
+	        			obj-model="obj: #watercolor-obj" 
+	        			material="color: #c2c7f3; metalness: 0; roughness: 1; src: #palette-tex; shader: flat;">
+	        			</a-entity>
+	        		<a-entity 
+						class="clickableObject"
+	        			obj-model="obj: #smartphone-obj" 
+	        			material="color: #c2c7f3; metalness: 0; roughness: 1; src: #palette-tex; shader: flat;">
+	        			</a-entity>
+        		</a-entity>
+        		<a-entity displaystars id="displaystars"></a-entity>
+        		<a-entity 
+        			scale="8 8 8"
+        			text="value: Hello World; align: center; font: ./fonts/FredokaOne-Regular.ttf"></a-entity>
+        	</a-entity>
+
+        	<!-- GALLERY SCENE -->
+    			
+
+    			<!-- Art 1 -->
+    			<!-- <a-entity position="-3 0 -8">
+					
+					<a-entity>
+						<a-entity 
+							geometry="primitive: sphere; radius: 0.07" 
+							material="color: #06484a; shader: flat" 
+							light="castShadow: true; color: #EF2D5E; intensity: 1; shadowBias: 0.01; shadowCameraNear: 1; type: point; shadowMapWidth: 1024; shadowMapHeight: 1024; castShadow: true; target: #ground;" 
+							position="0 0.2 0.5"></a-entity>
+						<a-animation 
+							attribute="rotation" 
+							to="0 360 360" 
+							dur="5000" 
+							easing="linear" 
+							repeat="indefinite"></a-animation>
+					</a-entity>
+					<a-entity>
+						<a-entity 
+							geometry="primitive: sphere; radius: 0.07" 
+							material="color: #FAFAFA; shader: flat" 
+							light="castShadow: true; color: #FAFAFA; intensity: 0.5; shadowBias: 0.01; shadowCameraNear: 1; type: point; shadowMapWidth: 1024; shadowMapHeight: 1024; castShadow: true; target: #ground;" 
+							position="0 0 0"></a-entity>
+						<a-animation 
+							attribute="scale" 
+							to="1.5 1.5 1.5" 
+							dur="3000" 
+							direction="alternate" 
+							repeat="indefinite"></a-animation>
+					</a-entity>
+					<a-entity 
+						geometry="primitive: torusKnot; radius: 0.5; radiusTubular: 0.03; segmentsRadial: 150; segmentsTubular: 10; p: 7; q: 1;" 
+						material="color: #181818; metalness: 0.75" 
+						shadow="cast: true; receive: true" 
+						position="0 0 0">
+							<a-animation 
+								attribute="rotation" 
+								dur="36000" 
+								to="360 360 360" 
+								repeat="indefinite" 
+								easing="linear"></a-animation>
+					</a-entity>
+
+					<a-box 
+	    				position="0 -1.3 0" 
+	    				color="red" 
+	    				shadow
+	    				material="color: #fcfcfc; metalness: 0">
+	    				</a-box>
+				</a-entity>-->
+
+				<!-- Art 2 -->
+    			<!-- <a-entity position="3 0 -8">
+					<a-entity>
+						<a-entity 
+							geometry="primitive: sphere; radius: 0.07" 
+							material="color: #06484a; shader: flat" 
+							position="0 -0.5 0"></a-entity>
+						<a-animation 
+							attribute="position" 
+							to="0 0.5 0" 
+							dur="2500" 
+							direction="alternate" 
+							ease="linear"
+							repeat="indefinite"></a-animation>
+					</a-entity>
+					<a-entity>
+						<a-entity 
+							geometry="primitive: sphere; radius: 0.07" 
+							material="color: #FAFAFA; shader: flat" 
+							position="-0.2 0.5 0"></a-entity>
+							<a-entity 
+							geometry="primitive: sphere; radius: 0.07" 
+							material="color: #FAFAFA; shader: flat" 
+							position="0.2 0.5 0"></a-entity>
+						<a-animation 
+							attribute="position" 
+							to="0 -0.5 0" 
+							dur="2500" 
+							direction="alternate" 
+							ease="linear"
+							repeat="indefinite"></a-animation>
+					</a-entity>
+					<a-entity 
+						geometry="primitive: torusKnot; radius: 0.5; radiusTubular: 0.03; segmentsRadial: 150; segmentsTubular: 10; p: 17; q: 4;" 
+						material="color: #181818; metalness: 0.75" 
+						shadow="cast: true; receive: true" 
+						position="0 0 0">
+							<a-animation 
+								attribute="rotation" 
+								dur="2500" 
+								to="180 0 0" 
+								repeat="indefinite" 
+								direction="alternate"
+								easing="ease-in-out"></a-animation>
+					</a-entity>
+
+    				<a-box 
+	    				position="0 -1.3 0" 
+	    				color="red" 
+	    				shadow
+	    				material="color: #fcfcfc; metalness: 0">
+	    				</a-box>
+				</a-entity>-->
+
+				<!--<a-box dynamic-body position="-1 2 -4" rotation="0 45 0" height="2" color="#4CC3D9" shadow></a-box>-->
+
+				<!-- SALLE UI BOUTIQUE -->
+				<!-- <a-entity 
+					position="-12.216 0 -8.29" 
+		  			rotation="0 90 0">
+			  		<a-entity 
+			  			template="src: #link"  
+			  			data-thumb="#button-ui-shop"
+			  			set-ui-shop="on: click; target: .ui-shop">
+			  			</a-entity>
+
+				  		<a-entity position="0 -1 -1.5" scale="0.01 0.01 0.01">
+							<a-gltf-model 
+								src="#dress-2-gltf" 
+								shadow="cast: true">
+								</a-gltf-model>
+							<a-animation
+								attribute="rotation"
+								to= "0 360 0"
+								repeat= "indefinite"
+								dur= "8000"
+								easing="linear"
+								></a-animation>
+						</a-entity>
+						<a-entity 
+							geometry="primitive: plane; height: 1; width: 1"
+							material="shader: flat; transparent:true; src: #txt-item-dress-1" 
+							position="1 0.5 -2" >
+							</a-entity>
+						<a-entity 
+							geometry="primitive: plane; height: 0.5; width: 1"
+							material="shader: flat; transparent:true; src: #button-item-dress-1"  
+							position="1 0.2 -1.99"
+							class="button-item"
+							event-set__1="_event: mousedown; scale: 1 1 1"
+						    event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+						    event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+						    event-set__4="_event: mouseleave; scale: 1 1 1">
+							</a-entity>
+
+						<a-entity position="-2 0 -2" rotation="0 30 0" scale="1 1 1">
+							<a-box 
+								geometry="depth: .05; height: 2; width: .01" 
+								material="shader: flat" 
+								color="#e55039">
+								<a-animation 
+									attribute="width" 
+									to="3" 
+									dur="1000" 
+									fill="both" 
+									delay="1000"></a-animation>
+							</a-box>
+						</a-entity>
+
+						<a-entity position="3 0 -2" rotation="0 -45 0" scale="1 1 1">
+							<a-box 
+								geometry="depth: .05; height: 2; width: .01" 
+								material="shader: flat" 
+								color="#4a69bd">
+								<a-animation 
+									attribute="width" 
+									to="2" 
+									dur="1000" 
+									fill="both" 
+									delay="1000"></a-animation>
+							</a-box>
+							<a-text 
+								position="-0.666 -0.25 0.069" 
+								geometry="
+									primitive: plane;
+									visible: false;" 
+								value="Hello, World!"></a-text>
+
+							<a-entity text="value: Hello World;"></a-entity>
+						</a-entity>
+				</a-entity> -->
+    			
+    			<!-- SALLE HOLOGRAMME -->
+    			<!-- <a-entity 
+    				material="shader: chromakey; src: #hologram-kenzo; color: 0 0 0" 
+    				geometry="primitive: plane; width:10; height:4.5" 
+    				position="16.37 0.585 2.923" 
+        			rotation="0 -90 0"></a-entity>
+    			<a-entity 
+					geometry="primitive: plane; height: 2; width: 2"
+					material="shader: flat; transparent:true; src: #txt-hologram" 
+					position="10.555 -0.5 -0.824" 
+    				rotation="0 -90 0">
+					</a-entity>
+
+			</a-entity> -->
+
+			<!-- SCÈNE VIDEO 360 -->
+        	<!-- <a-entity id="360-scene" visible="false">
+        		<a-sky 
+        			color="#EEEEFF" 
+        			material="src: #sea_sphere-texture">
+        			</a-sky>
+        		<a-entity 
+        			template="src: #link" 
+        			data-src="#gallery-scene" 
+        			data-target="#360-scene" 
+        			data-thumb="#back-button" 
+        			position="-14.8 0 4.086"
+        			rotation="0 90 0">
+        			</a-entity>
+			</a-entity> -->
+
+			<!-- CAMERA + CURSOR + BODY wasd-controls look-controls near: 1000; far:4000; fov:8.2 -->
+			<a-entity 
+				wasd-controls look-controls
+				camera="fov: 8.2; near: 1; far:10000;"
+				laser-controls
+				position="0 0 80"
+				>
+	          	<a-entity static-body="shape: sphere; sphereRadius: 0.07;"></a-entity>
+	        <a-cursor id="cursor"
+	        	scale="0.1 0.1 0.1"
+		        visible="true"
+		        animation__click="property: scale; startEvents: click; from: 0.01 0.01 0.01; to: 0.1 0.1 0.1; dur: 150"
+		        animation__fusing="property: fusing; startEvents: fusing; from: 0.1 0.1 0.1; to: 0.01 0.01 0.01; dur: 1500"
+		        event-set__1="_event: mouseenter; color: springgreen"
+		        event-set__2="_event: mouseleave; color: black"
+		        fuse="true"
+		        raycaster="objects: .link, .button-item, .clickableObject"></a-cursor>
+			</a-entity>
+        	<a-entity 
+        		teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" 
+        		hand-controls="left">
+        		</a-entity>
+      		<a-entity 
+      			teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" 
+      			hand-controls="right">
+      			</a-entity>
+
+    	</a-scene>
+
+    	<script type="text/javascript">
+    		function nextScene() {
+    			document.getElementById('galleryScene').setAttribute('visible', 'false')
+    			document.getElementById('360VideoScene').setAttribute('visible', 'true')
+    		}
+
+    		document.addEventListener('start-ui-shop', function () {
+    			console.log("Received 'start-ui-shop'.");
+    		});
+
+    		document.addEventListener('start-rotation', function () {
+    			console.log("Received 'start-rotation'.");
+    		});
+    	</script>
+		<script src="main.js"></script>
+	</body>
+</html>
