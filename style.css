@@ -1,11 +1,13 @@
+@font-face {
+  font-family: FredokaOne;
+  src: url("fonts/FredokaOne-Regular.ttf");
+}
+
 
 /* to display text in front of the aframe canvas*/
 a-scene{
-  z-index: -1;
+  z-index: -2;
 }
-
-/**/
-
 
 body{
     background-color: #000;
@@ -20,12 +22,134 @@ a:link, a:hover, a:visited, a:active {
     text-decoration: none;
 }
 
+h2 {
+    font-size: 2.5em;
+    font-family: FredokaOne;
+    color: #fefefe;
+    text-align: center;
+    padding: 0;
+    margin: 0.3em;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-family: FredokaOne;
+    color: #4650c5;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+h4 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    font-size: 1.2em;
+}
+
+.tags {
+    color: #4650c5;
+}
+
+.slider{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    height: 80%;
+    margin-top: 1em;
+    display: flex;
+    margin-top: 2em;
+}
+
+.project{
+    flex: 0 0 auto;
+    width: 25%;
+    height: 100%;
+    color: #fefefe;
+    font-family: FredokaOne;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.projectimage{
+    width: 90%;
+    height: 80%;
+    background-color: white;
+    border-radius: 0.5em;
+}
+
+#debug {
+    z-index: -1;
+    position: absolute;
+}
+
+#section{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -3;
+    width: 100%;
+    height: 100%;
+}
+
+#innersection {
+    background-color: #1f234f;
+    box-shadow: 1px 1px 12px rgba(21, 24, 58, 0.5);
+    color: #262626;
+    width: 80%;
+    height: 80%;
+    border-radius: 1em;
+    padding: 2em;
+}
+
+#innersection a {
+    color: #262626;
+}
+
+#closebutton {
+    width: 2em;
+    height: 2em;
+    float: right;
+    background-color: #2f357a;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#closebutton img {
+    fill: currentColor;
+    width: 100%;
+    height: 100%;
+}
+
+#closebutton img:hover {
+    cursor: pointer;
+}
+
+.closeP {
+    font-size: 1.5em;
+    font-family: FredokaOne;
+    color: #fefefe;
+    text-align: center;
+    cursor: pointer;
+}
+
+#closeP:hover {
+    cursor: pointer;
+}
+
 .container{
-    position:absolute;
-    width:100%;
+    position: absolute;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
+    top: 0;
 }
 
 .info{
@@ -46,11 +170,11 @@ a:link, a:hover, a:visited, a:active {
 
 .info .title{
     font-size: 5em;
-    font-family: 'Fredoka One', cursive;
+    font-family: FredokaOne;
 }
 
 .info .button{
-    font-family: 'Fredoka One', cursive;
+    font-family: FredokaOne;
     background-color: #c2bc95;
     padding-right: 1em;
     padding-left: 1em;
